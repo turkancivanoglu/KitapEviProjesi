@@ -1,0 +1,54 @@
+﻿@model KitapEvi_Models.Models.Yayinevi
+
+@{
+    var title = "Yayın Evi Oluştur";
+}
+
+<form method="post">
+    <div class="row p-3 border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="YayineviID" />
+        @if (Model.YayineviID != 0)
+        {
+            title = "Yayın Evi Düzenle";
+        }
+        <div class="col-12">
+            <h2 class="text-primary">@title</h2>
+        </div>
+        <div class="col-8 pt-4">
+            <div class="row form-group">
+                <div class="col-4">
+                    <label asp-for="YayineviAdi"></label>
+                </div>
+                <div col-8>
+                    <input asp-for="YayineviAdi" class="form-control" />
+                    <span asp-validation-for="YayineviAdi" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-4">
+                    <label asp-for="Lokasyon"></label>
+                </div>
+                <div col-8>
+                    <input asp-for="Lokasyon" class="form-control" />
+                    <span asp-validation-for="Lokasyon" class="text-success"></span>
+                </div>
+            </div>
+            <div class=" row form-group">
+                <div class="col-4 offset-4">
+                    @if (Model.YayineviID != 0)
+                    {
+                        <button type="submit" class="btn btn-primary form-control">Güncelle</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-primary form-control">Ekle</button>
+                    }
+                </div>
+                <div class="col-4">
+                    <a asp-action="Index" class="btn btn-success form-control">Listeye Geri Dön</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
